@@ -1,0 +1,13 @@
+[ignore]
+.*/node_modules/.*\.json$
+.*/coverage/.*
+.*/src-compiled/.*
+.*/src-compiled-cover/.*
+.*/src-compiled-test/.*
+
+[include]
+
+[libs]
+flow
+
+[options]
