@@ -12,6 +12,7 @@ What's inside:
 Targets:
 
  - `clean` - remove all artifacts;
+ - `run.%` - run `scripts/%.js`;
  - `test` - run unit tests;
  - `lint` - lint code;
  - `flow` - run `flow`;

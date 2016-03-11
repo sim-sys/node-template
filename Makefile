@@ -2,12 +2,28 @@ eslint := node_modules/.bin/eslint
 jscs := node_modules/.bin/jscs
 flow := node_modules/.bin/flow
 babel := node_modules/.bin/babel
+babel-node := node_modules/.bin/babel-node
 mocha := node_modules/.bin/mocha
 _mocha := node_modules/.bin/_mocha
 babel-external-helpers := node_modules/.bin/babel-external-helpers
 istanbul := node_modules/.bin/istanbul
 
+
+SCRIPT_FILES = $(wildcard scripts/*.js)
+SCRIPTS = $(patsubst scripts/%.js,%,$(SCRIPT_FILES))
+
+define SCRIPT
+
+run.$(1):
+	@echo "Running scripts/$(1).js"
+	@echo
+	@$(babel-node) ./scripts/$(1).js
+
+endef
+
 all: clean flow lint test check-coverage
+
+$(foreach i,$(SCRIPTS), $(eval $(call SCRIPT,$(i))))
 
 lint:
 	$(eslint) src
@@ -46,4 +62,4 @@ clean:
 	rm -rf src-compiled-cover
 	rm -rf cover
 
-.PHONY: clean test lint flow compile compile-test compile-cover all cover
+.PHONY: clean test lint flow compile compile-test compile-cover all cover run.%
