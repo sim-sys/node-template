@@ -1,1 +1,1 @@
-module.exports = require('./src-compiled/exports.js');
+module.exports = require('./src-compiled/main.js');
