@@ -37,7 +37,7 @@ compile:
 	$(babel) src --ignore __tests__ --out-dir src-compiled --copy-files
 
 compile-test:
-	rm -rf src-compiled
+	rm -rf src-compiled-test
 	$(babel) src --out-dir src-compiled-test --copy-files
 
 compile-cover:
