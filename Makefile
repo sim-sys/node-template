@@ -15,7 +15,8 @@ SCRIPTS = $(patsubst scripts/%.js,%,$(SCRIPT_FILES))
 define SCRIPT
 
 run.$(1):
-	@echo "Running scripts/$(1).js"
+	@echo
+	@echo "Running \033[0;32mscripts/$(1).js\033[0m"
 	@echo
 	@$(babel-node) ./scripts/$(1).js
 
@@ -33,22 +34,22 @@ flow:
 	$(flow) check --no-flowlib
 
 compile:
-	rm -rf src-compiled
+	@rm -rf src-compiled
 	$(babel) src --ignore __tests__ --out-dir src-compiled --copy-files
 
 compile-test:
-	rm -rf src-compiled-test
+	@rm -rf src-compiled-test
 	$(babel) src --out-dir src-compiled-test --copy-files
 
 compile-cover:
-	rm -rf src-compiled-cover
+	@rm -rf src-compiled-cover
 	$(babel) src --out-dir src-compiled-cover --copy-files --plugins=external-helpers-2
 
 cover: compile-cover
-	rm -rf cover
+	@rm -rf cover
 	$(babel-external-helpers) > ./babel-helpers.js
 	$(istanbul) cover $(_mocha) -- --require ./babel-helpers.js src-compiled-cover/**/__tests__/**/*.js
-	rm babel-helpers.js
+	@rm babel-helpers.js
 
 check-coverage: cover
 	$(istanbul) check-coverage
@@ -57,9 +58,9 @@ test: compile-test
 	$(mocha) src-compiled-test/**/__tests__/**/*.js
 
 clean:
-	rm -rf src-compiled
-	rm -rf src-compiled-test
-	rm -rf src-compiled-cover
-	rm -rf cover
+	@rm -rf src-compiled
+	@rm -rf src-compiled-test
+	@rm -rf src-compiled-cover
+	@rm -rf cover
 
 .PHONY: clean test lint flow compile compile-test compile-cover all cover run.%
