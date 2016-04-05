@@ -21,7 +21,7 @@ run.$(1):
 
 endef
 
-all: clean flow lint test check-coverage
+all: clean flow lint test check-coverage compile
 
 $(foreach i,$(SCRIPTS), $(eval $(call SCRIPT,$(i))))
 
