@@ -30,11 +30,12 @@ $(foreach i,$(SCRIPTS), $(eval $(call SCRIPT,$(i))))
 define FLOWGEN
 var d = require('./flow.json');
 var dev = Object.keys(require('./package.json').devDependencies || {});
+var test = d.testDependencies || [];
 
 console.log(`
 [ignore]
 $${(d.ignore || []).join('\n')}
-$${dev.map(d => `<PROJECT_ROOT>/node_modules/$${d}/.*`).join('\n')}
+$${dev.filter(d => test.indexOf(d) === -1).map(d => `<PROJECT_ROOT>/node_modules/$${d}/.*`).join('\n')}
 
 [include]
 $${(d.include || []).join('\n')}

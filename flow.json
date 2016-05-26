@@ -8,6 +8,9 @@
     "<PROJECT_ROOT>/node_modules/.*/scripts/.*",
     "<PROJECT_ROOT>/node_modules/.*/__tests__/.*"
   ],
+  "testDependencies": [
+    "chai"
+  ],
   "libs": [
     "flow"
   ]
