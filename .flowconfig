@@ -4,6 +4,9 @@
 .*/src-compiled/.*
 .*/src-compiled-cover/.*
 .*/src-compiled-test/.*
+.*/node_modules/.*/scripts/.*
+.*/node_modules/.*/__tests__/.*
+node_modules/.flow/
 
 [include]
 
