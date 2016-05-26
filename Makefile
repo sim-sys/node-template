@@ -1,3 +1,4 @@
+node := node
 eslint := node_modules/.bin/eslint
 jscs := node_modules/.bin/jscs
 flow := node_modules/.bin/flow
@@ -26,11 +27,36 @@ all: clean flow lint test check-coverage compile
 
 $(foreach i,$(SCRIPTS), $(eval $(call SCRIPT,$(i))))
 
+define FLOWGEN
+var d = require('./flow.json');
+var dev = Object.keys(require('./package.json').devDependencies || {});
+
+console.log(`
+[ignore]
+$${(d.ignore || []).join('\n')}
+$${dev.map(d => `<PROJECT_ROOT>/node_modules/$${d}/.*`).join('\n')}
+
+[include]
+$${(d.include || []).join('\n')}
+
+[libs]
+$${(d.libs || []).join('\n')}
+
+[options]
+$${(d.options || []).join('\n')}
+`);
+endef
+
+export FLOWGEN
+
+.flowconfig: flow.json
+	@$(node) -e "$$FLOWGEN" > .flowconfig
+
 lint:
 	$(eslint) src
 	$(jscs) src
 
-flow:
+flow: .flowconfig
 	$(flow) check --no-flowlib
 
 compile:
