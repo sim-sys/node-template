@@ -11,6 +11,7 @@ node_modules/.flow/
 [include]
 
 [libs]
+node_modules/.flow/
 flow
 
 [options]
