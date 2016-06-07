@@ -70,7 +70,7 @@ compile-test:
 
 compile-cover:
 	@rm -rf src-compiled-cover
-	$(babel) src --out-dir src-compiled-cover --copy-files --plugins=babel-plugin-external-helpers-2
+	$(babel) src --out-dir src-compiled-cover --copy-files --plugins=`pwd`/tools/node_modules/babel-plugin-external-helpers-2
 
 cover: compile-cover
 	@rm -rf cover
