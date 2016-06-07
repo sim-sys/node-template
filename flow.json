@@ -1,6 +1,6 @@
 {
   "ignore": [
-    "<PROJECT_ROOT>/node_modules/.*\\.json$",
+    "<PROJECT_ROOT>/tools/.*",
     "<PROJECT_ROOT>/coverage/.*",
     "<PROJECT_ROOT>/src-compiled/.*",
     "<PROJECT_ROOT>/src-compiled-cover/.*",

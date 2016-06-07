@@ -1,9 +1,9 @@
 {
   "plugins": [
-    "transform-flow-strip-types",
-    "transform-es2015-modules-commonjs",
-    "transform-async-to-generator",
-    "transform-es2015-parameters",
-    "transform-es2015-destructuring"
+    "./tools/node_modules/babel-plugin-transform-flow-strip-types",
+    "./tools/node_modules/babel-plugin-transform-es2015-modules-commonjs",
+    "./tools/node_modules/babel-plugin-transform-async-to-generator",
+    "./tools/node_modules/babel-plugin-transform-es2015-parameters",
+    "./tools/node_modules/babel-plugin-transform-es2015-destructuring"
   ]
 }

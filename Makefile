@@ -1,13 +1,13 @@
 node := node
-eslint := node_modules/.bin/eslint
-jscs := node_modules/.bin/jscs
-flow := node_modules/.bin/flow
-babel := node_modules/.bin/babel
-babel-node := node_modules/.bin/babel-node
-mocha := node_modules/.bin/mocha
-_mocha := node_modules/.bin/_mocha
-babel-external-helpers := node_modules/.bin/babel-external-helpers
-istanbul := node_modules/.bin/istanbul
+eslint := tools/node_modules/.bin/eslint
+jscs := tools/node_modules/.bin/jscs
+flow := tools/node_modules/.bin/flow
+babel := tools/node_modules/.bin/babel
+babel-node := tools/node_modules/.bin/babel-node
+mocha := tools/node_modules/.bin/mocha
+_mocha := tools/node_modules/.bin/_mocha
+babel-external-helpers := tools/node_modules/.bin/babel-external-helpers
+istanbul := tools/node_modules/.bin/istanbul
 
 
 SCRIPT_FILES = $(wildcard scripts/*.js)
@@ -70,7 +70,7 @@ compile-test:
 
 compile-cover:
 	@rm -rf src-compiled-cover
-	$(babel) src --out-dir src-compiled-cover --copy-files --plugins=external-helpers-2
+	$(babel) src --out-dir src-compiled-cover --copy-files --plugins=babel-plugin-external-helpers-2
 
 cover: compile-cover
 	@rm -rf cover
