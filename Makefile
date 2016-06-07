@@ -1,6 +1,5 @@
 node := node
 eslint := tools/node_modules/.bin/eslint
-jscs := tools/node_modules/.bin/jscs
 flow := tools/node_modules/.bin/flow
 babel := tools/node_modules/.bin/babel
 babel-node := tools/node_modules/.bin/babel-node
@@ -55,7 +54,6 @@ export FLOWGEN
 
 lint:
 	$(eslint) src
-	$(jscs) src
 
 flow: .flowconfig
 	$(flow) check --no-flowlib
