@@ -7,7 +7,7 @@ What's inside:
  - testing (via `mocha` and `chai`);
  - coverage (via `istanbul`);
  - type-checking (via `flow`);
- - lintings (via `eslint` and `jscs`).
+ - lintings (via `eslint`).
 
 Targets:
 
