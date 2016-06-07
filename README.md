@@ -20,3 +20,12 @@ Targets:
  - `cover` - run `istanbul`;
  - `check-coverage` - check coverage levels;
  - `all` (default) - check everything.
+
+## How to start
+
+```bash
+mkdir my-project
+cd my-project
+git clone https://github.com/sim-sys/node-template ./
+node bootstrap.js
+```
