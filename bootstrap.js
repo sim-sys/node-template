@@ -144,7 +144,6 @@ function * main() {
   }
 
   cp.execSync('rm -rf .git');
-  cp.execSync('make .flowconfig');
   cp.execSync('rm bootstrap.js');
   cp.execSync('cd tools && npm install', { stdio: 'inherit' });
   cp.execSync('npm install', { stdio: 'inherit' });

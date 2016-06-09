@@ -26,36 +26,11 @@ all: clean flow lint test check-coverage compile
 
 $(foreach i,$(SCRIPTS), $(eval $(call SCRIPT,$(i))))
 
-define FLOWGEN
-var d = require('./flow.json');
-var dev = Object.keys(require('./package.json').devDependencies || {});
-var test = d.testDependencies || [];
-
-console.log(`
-[ignore]
-$${(d.ignore || []).join('\n')}
-$${dev.filter(d => test.indexOf(d) === -1).map(d => `<PROJECT_ROOT>/node_modules/$${d}/.*`).join('\n')}
-
-[include]
-$${(d.include || []).join('\n')}
-
-[libs]
-$${(d.libs || []).join('\n')}
-
-[options]
-$${(d.options || []).join('\n')}
-`);
-endef
-
-export FLOWGEN
-
-.flowconfig: flow.json
-	@$(node) -e "$$FLOWGEN" > .flowconfig
 
 lint:
 	$(eslint) src
 
-flow: .flowconfig
+flow:
 	$(flow) check --no-flowlib
 
 compile:
