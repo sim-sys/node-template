@@ -4,6 +4,7 @@
   "description": "Node template",
   "main": "index.js",
   "private": true,
+  "allowPublish": false,
   "author": "Simple Systems",
   "license": "UNLICENSED",
   "scripts": {

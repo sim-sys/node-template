@@ -8,7 +8,7 @@ const cp = require('child_process');
 const packageDefaults = {
   name: path.basename(process.cwd()),
   version: '1.0.0',
-  private: true,
+  allowPublish: false,
   author: 'Simple Systems',
   license: 'UNLICENSED',
 };
@@ -126,12 +126,7 @@ function * main() {
   packageJSON.name = name;
   packageJSON.version = version;
 
-  if (isOpenSource) {
-    delete packageJSON.private;
-  } else {
-    packageJSON.private = true;
-  }
-
+  packageJSON.allowPublish = isOpenSource;
   packageJSON.author = author;
   packageJSON.license = license;
 

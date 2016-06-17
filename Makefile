@@ -69,12 +69,24 @@ define PKG
 var pkg = require('./package.json');
 delete pkg.devDependencies;
 delete pkg.scripts;
+delete pkg.private; // private is used to prevent from publishing source
+delete pkg.allowPublish;
 console.log(JSON.stringify(pkg));
 endef
 
 export PKG
 
+define CHECK
+var pkg = require('./package.json');
+if (!pkg.allowPublish) {
+  throw new Error('publishing is not allowed');
+}
+endef
+
+export CHECK
+
 dist: compile
+	@$(node) -e "$$CHECK"
 	@rm -rf dist
 	@mkdir -p dist
 	@cp -r src/ dist
