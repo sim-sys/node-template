@@ -95,4 +95,7 @@ dist: compile
 	@cp -r src-compiled/ dist
 	@$(node) -e "$$PKG" > dist/package.json
 
-.PHONY: clean test lint flow compile compile-test compile-cover all cover run.% check-coverage dist
+publish:
+	cd dist && npm publish
+
+.PHONY: clean test lint flow compile compile-test compile-cover all cover run.% check-coverage dist publish
