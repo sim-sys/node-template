@@ -23,9 +23,14 @@ Targets:
 
 ## How to start
 
+Run:
+
 ```bash
 mkdir my-project
 cd my-project
 git clone https://github.com/sim-sys/node-template ./
 node bootstrap.js
 ```
+
+And answer some questions. When you are ready to publish your lib, run `make dist`
+and `make publish`.
