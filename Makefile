@@ -63,4 +63,24 @@ clean:
 	@rm -rf src-compiled-cover
 	@rm -rf cover
 
-.PHONY: clean test lint flow compile compile-test compile-cover all cover run.%
+# lib only
+
+define PKG
+var pkg = require('./package.json');
+delete pkg.devDependencies;
+delete pkg.scripts;
+console.log(JSON.stringify(pkg));
+endef
+
+export PKG
+
+dist: compile
+	@rm -rf dist
+	@mkdir -p dist
+	@cp -r src/ dist
+	@find dist/ -name '__tests__' | xargs rm -r
+	@find dist/ -name '*.js' | xargs -I {} mv {} {}.flow
+	@cp -r src-compiled/ dist
+	@$(node) -e "$$PKG" > dist/package.json
+
+.PHONY: clean test lint flow compile compile-test compile-cover all cover run.% check-coverage dist
