@@ -133,8 +133,6 @@ function * main() {
   fs.writeFileSync(path.resolve(__dirname, 'package.json'), JSON.stringify(packageJSON, null, '  ') + '\n');
 
   if (type === 'app') {
-    cp.execSync('rm index.js');
-    cp.execSync('rm index.js.flow');
     fs.appendFileSync(path.resolve(__dirname, '.gitignore'), 'src-compiled\n');
   }
 
