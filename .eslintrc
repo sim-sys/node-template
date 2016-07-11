@@ -1,6 +1,9 @@
 {
   "extends": "airbnb",
   "parser": "babel-eslint",
+  "plugins": [
+    "flow-vars"
+  ],
   "rules": {
     "comma-dangle": 0,
     "func-names": 0,
@@ -18,9 +21,5 @@
     "eqeqeq": [2, "allow-null"],
     "prefer-template": 0,
     "space-before-function-paren": [2, "never"]
-  },
-  "globals": {
-    "describe": true,
-    "it": true
   }
 }
