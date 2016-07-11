@@ -1,13 +1,11 @@
 /* @flow */
 
-import { expect } from 'chai';
-import { foo } from '../main.js';
+import { foo } from '../index.js';
+import assert from 'assert';
 
-describe('main', () => {
-  describe('foo', () => {
-    it('should work', async () => {
-      const result = await foo();
-      expect(result).to.be.equal('bar');
-    });
-  });
-});
+export default class MainTests {
+  async testFoo() {
+    const result = await foo();
+    assert.equal(result, 'bar');
+  }
+}

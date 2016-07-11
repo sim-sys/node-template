@@ -9,8 +9,5 @@
   "license": "UNLICENSED",
   "scripts": {
     "test": "make test"
-  },
-  "devDependencies": {
-    "chai": "3.5.0"
   }
 }
